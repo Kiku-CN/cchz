@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2025长春航展抢票助手</title>
+    <style>
+      :root {
+        --main-width: 500px;
+        --input-width: 280px;
+        --select-width: 280px;
+        --btn-width: 90px;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: var(--main-width);
+        margin: 0 auto;
+        background: #f7f9fa;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+        font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .form-row {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+        gap: 8px;
+      }
+      label {
+        min-width: 40px;
+        color: #333;
+        font-size: 15px;
+      }
+      input, select, textarea, button {
+        font-size: 15px;
+        border-radius: 5px;
+        border: 1px solid #d0d7de;
+        padding: 6px 10px;
+        outline: none;
+        transition: border 0.2s;
+      }
+      input, #friendsSelect, #dateSelect {
+        width: var(--input-width);
+        box-sizing: border-box;
+      }
+      #friendsSelect, #dateSelect {
+        width: var(--select-width);
+        min-width: var(--select-width);
+        max-width: var(--select-width);
+      }
+      button {
+        width: var(--btn-width);
+        background: #409eff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        padding: 7px 0;
+        font-weight: 500;
+        transition: background 0.2s;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      button:hover {
+        background: #1976d2;
+      }
+      #logArea {
+        width: 90%;
+        height: 600px;
+        margin-top: 8px;
+        resize: none;
+        background: #f4f6f8;
+        border: 1px solid #e0e3e7;
+        color: #555;
+        font-size: 13px;
+        border-radius: 5px;
+        padding: 6px 8px;
+      }
+      input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        margin-left: 6px;
+        margin-right: 2px;
+        vertical-align: middle;
+      }
+      input[type="number"] {
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-row">
+      <label for="codeInput">微信code</label>
+      <input id="codeInput" placeholder="请输入微信code" />
+      <button id="loginBtn">登录</button>
+    </div>
+    <div class="form-row">
+      <label for="friendsSelect">好友列表</label>
+      <select id="friendsSelect"></select>
+      <button id="queryFriendsBtn">查询好友</button>
+    </div>
+    <div class="form-row">
+      <label for="dateSelect">选择门票</label>
+      <select id="dateSelect"></select>
+      <button id="refresh-btn">查票</button>
+    </div>
+    <div class="form-row">
+      <label">自动重抢</label>
+      <input type="radio" id="autoNo" name="autoGrab" value="no" checked>
+      <label for="autoNo">否</label>
+      <input type="radio" id="autoYes" name="autoGrab" value="yes">
+      <label for="autoYes">是</label>
+      间隔<input id="intervalInput" type="number" min="1" max="30" value="2" width="20px" />秒
+      <button id="grabBtn">抢票</button>
+    </div>
+    <textarea id="logArea" readonly placeholder="日志输出..."></textarea>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
